@@ -1,10 +1,10 @@
 export const ROUTES = [
   {
-    path: "/",
-    name: "Calendar",
+    path: '/',
+    name: 'Calendar',
   },
   {
-    path: "/about",
-    name: "About",
+    path: '/about',
+    name: 'About',
   },
 ];

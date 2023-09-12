@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const useMount = (fn: () => void) => {
+export const useMount = (function_: () => void) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  React.useEffect(fn, []);
+  React.useEffect(function_, []);
 };
