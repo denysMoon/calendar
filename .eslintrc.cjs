@@ -16,9 +16,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+
     // temp
-    'unicorn/no-empty-file': 'warn',
-    'unicorn/filename-case': 'off',
-    'unicorn/filename-case': 'off',
+    'unicorn/no-empty-file': 1,
+    'unicorn/filename-case': 0,
+    'unicorn/filename-case': 0,
   },
 }
