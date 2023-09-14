@@ -6,7 +6,6 @@ export const HeaderStyled = emotion.header({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: 'green',
 });
 
 export const NavStyled = emotion.nav({
