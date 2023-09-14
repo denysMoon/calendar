@@ -1,0 +1,76 @@
+name: Calendar CI
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.17.1'
+      - name: Install Dependencies
+        run: npm install
+      - name: TypeScript Compiler Checks
+        run: npm run compiler-checks
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.2'
+      - name: Install Dependencies
+        run: npm install
+      - name: Lint Project
+        run: npm run lint
+
+  deploy-preview:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.2'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy Preview
+        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=false
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.2'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy Production
+        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=true
