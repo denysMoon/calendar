@@ -18,13 +18,21 @@ export const INITIAL_EVENTS: EventInput[] = [
   },
 ];
 
-export const handleDateSelect = (selectInfo: DateSelectArg) => {
-  const title = prompt('Please enter a new title for your event');
-  const calendarApi = selectInfo.view.calendar;
+export const handleEventClick = (clickInfo: EventClickArg) => {
+  if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    clickInfo.event.remove();
+  }
+};
 
-  calendarApi.unselect();
+export const handleAddEvent = (
+  title: string,
+  selectInfo: DateSelectArg,
+  setModalVisible: (argument0: boolean) => void,
+) => {
+  const calendarApi = selectInfo?.view.calendar;
+  calendarApi?.unselect();
 
-  if (title) {
+  if (title && calendarApi) {
     calendarApi.addEvent({
       id: createEventId(),
       title,
@@ -33,10 +41,6 @@ export const handleDateSelect = (selectInfo: DateSelectArg) => {
       allDay: selectInfo.allDay,
     });
   }
-};
 
-export const handleEventClick = (clickInfo: EventClickArg) => {
-  if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-    clickInfo.event.remove();
-  }
+  setModalVisible(false);
 };
