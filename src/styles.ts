@@ -1,6 +1,12 @@
 import emotion from '@emotion/styled';
 
-export const PageNotFoundWrapperStyled = emotion.div({
+export const MainWrapperStyled = emotion.div({
+  marginTop: '20px',
+  height: '90vh',
+  width: '100%',
+});
+
+export const PageWrapperStyled = emotion.div({
   marginTop: '20px',
   height: '70vh',
   width: '100%',
