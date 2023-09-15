@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Button, Modal as ModalBootstrap } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Modal as ModalBootstrap, FloatingLabel, Form } from 'react-bootstrap';
 import { handleAddEvent } from '../../utils/calendarEvents';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
+import { ModalBootstrapStyled } from './styled';
 
 export const Modal: React.FC<{
   handleCloseModal: (argument0: boolean) => void;
@@ -9,25 +10,31 @@ export const Modal: React.FC<{
   selectInfo: DateSelectArg;
 }> = ({ handleCloseModal, isShow, selectInfo }) => {
   const [title, setTitle] = useState('');
+  const [comment, setComment] = useState('');
 
   const handleSave = () => {
-    handleAddEvent(title, selectInfo, handleCloseModal);
+    handleAddEvent(title, comment, selectInfo, handleCloseModal);
   };
 
   return (
-    <ModalBootstrap show={isShow} onHide={() => handleCloseModal(false)}>
-      <ModalBootstrap.Dialog>
-        <ModalBootstrap.Header>
-          <ModalBootstrap.Title>Modal title</ModalBootstrap.Title>
-        </ModalBootstrap.Header>
-
+    <ModalBootstrap size="lg" show={isShow} onHide={() => handleCloseModal(false)}>
+      <ModalBootstrapStyled>
         <ModalBootstrap.Body>
-          <input
-            type="text"
-            value={title}
-            onChange={(event_: React.ChangeEvent<HTMLInputElement>) => setTitle(event_.target.value)}
-            placeholder="Event Title"
-          />
+          <FloatingLabel controlId="floatingTextarea" label="Event Title" className="mb-3">
+            <Form.Control
+              as="input"
+              value={title}
+              onChange={(event_: React.ChangeEvent<HTMLInputElement>) => setTitle(event_.target.value)}
+            />
+          </FloatingLabel>
+          <FloatingLabel controlId="floatingTextarea2" label="Comments">
+            <Form.Control
+              as="textarea"
+              value={comment}
+              onChange={(event_: React.ChangeEvent<HTMLInputElement>) => setComment(event_.target.value)}
+              style={{ height: '100px' }}
+            />
+          </FloatingLabel>
         </ModalBootstrap.Body>
 
         <ModalBootstrap.Footer>
@@ -38,7 +45,7 @@ export const Modal: React.FC<{
             Save changes
           </Button>
         </ModalBootstrap.Footer>
-      </ModalBootstrap.Dialog>
+      </ModalBootstrapStyled>
     </ModalBootstrap>
   );
 };

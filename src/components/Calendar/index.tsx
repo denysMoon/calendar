@@ -35,6 +35,7 @@ export const Calendar = () => {
         eventContent={renderEventContent}
         weekends={state.weekendsVisible}
         eventClick={handleEventClick}
+        height={'600px'}
       />
       {modalVisible && selectInfo && (
         <Modal handleCloseModal={setModalVisible} isShow={modalVisible} selectInfo={selectInfo} />
@@ -46,7 +47,8 @@ export const Calendar = () => {
 function renderEventContent(eventInfo: IEventContent) {
   return (
     <>
-      <b>{eventInfo.timeText}</b> - <i>{eventInfo.event.title}</i>
+      <i>{eventInfo.event.title}</i>
+      <p>{eventInfo.event.comment}</p>
     </>
   );
 }

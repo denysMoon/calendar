@@ -1,4 +1,3 @@
-import React from 'react';
 import { ROUTES } from '../../constants';
 import { CustomLink } from '../CustomLink';
 import { HeaderStyled, NavStyled } from './styles';

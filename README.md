@@ -22,7 +22,7 @@ Check out the live deployment [here](https://calendar-ashy-kappa.vercel.app/).
 ## Working on
 
 - Add redux state management
-- Improve styles / add storybook
+- Improve styles / add storybook / responsive design
 - Authorization with Auth0
 - Connect with relative DB (PostgresQL)
 
