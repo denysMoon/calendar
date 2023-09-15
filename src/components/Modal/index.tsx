@@ -27,7 +27,7 @@ export const Modal: React.FC<{
   };
 
   return (
-    <ModalBootstrap show={isShow} onHide={() => handleCloseModal(false)}>
+    <ModalBootstrap centered show={isShow} onHide={() => handleCloseModal(false)}>
       <ModalBootstrapStyled>
         <Form onSubmit={handleSubmit(handleSave)}>
           <ModalBootstrapBodyStyled>

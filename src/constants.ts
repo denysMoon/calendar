@@ -18,6 +18,7 @@ export const BUTTONS = {
   SAVE: 'Save',
   CLOSE: 'Close',
   GO_TO_MAIN: 'Go to Main',
+  SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
 };
 
 export const TITLES = {
