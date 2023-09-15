@@ -1,50 +1,48 @@
-import { useState } from 'react';
-import { Button, Modal as ModalBootstrap, FloatingLabel, Form } from 'react-bootstrap';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Modal as ModalBootstrap, Form } from 'react-bootstrap';
 import { handleAddEvent } from '../../utils/calendarEvents';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
-import { ModalBootstrapStyled } from './styled';
+import { schemaInputEventDescription } from '../../utils/yup';
+import { InputDescription } from '../../types';
+import { BUTTONS, LABELS } from '../../constants';
+import { Input } from '../Input';
+import { ModalBootstrapStyled, ModalBootstrapBodyStyled } from './styled';
 
 export const Modal: React.FC<{
   handleCloseModal: (argument0: boolean) => void;
   isShow: boolean;
   selectInfo: DateSelectArg;
 }> = ({ handleCloseModal, isShow, selectInfo }) => {
-  const [title, setTitle] = useState('');
-  const [comment, setComment] = useState('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<InputDescription>({ resolver: yupResolver(schemaInputEventDescription) });
 
-  const handleSave = () => {
-    handleAddEvent(title, comment, selectInfo, handleCloseModal);
+  const handleSave: SubmitHandler<InputDescription> = (data) => {
+    handleAddEvent(data.eventDescription, selectInfo, handleCloseModal);
+    reset();
   };
 
   return (
-    <ModalBootstrap size="lg" show={isShow} onHide={() => handleCloseModal(false)}>
+    <ModalBootstrap show={isShow} onHide={() => handleCloseModal(false)}>
       <ModalBootstrapStyled>
-        <ModalBootstrap.Body>
-          <FloatingLabel controlId="floatingTextarea" label="Event Title" className="mb-3">
-            <Form.Control
-              as="input"
-              value={title}
-              onChange={(event_: React.ChangeEvent<HTMLInputElement>) => setTitle(event_.target.value)}
-            />
-          </FloatingLabel>
-          <FloatingLabel controlId="floatingTextarea2" label="Comments">
-            <Form.Control
-              as="textarea"
-              value={comment}
-              onChange={(event_: React.ChangeEvent<HTMLInputElement>) => setComment(event_.target.value)}
-              style={{ height: '100px' }}
-            />
-          </FloatingLabel>
-        </ModalBootstrap.Body>
-
-        <ModalBootstrap.Footer>
-          <Button variant="secondary" onClick={() => handleCloseModal(false)}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save changes
-          </Button>
-        </ModalBootstrap.Footer>
+        <Form onSubmit={handleSubmit(handleSave)}>
+          <ModalBootstrapBodyStyled>
+            <Input type={'textarea'} label={LABELS.TYPE_DESCRIPTION} register={register} errors={errors} />
+          </ModalBootstrapBodyStyled>
+          <ModalBootstrap.Footer>
+            {/* Button will be common component */}
+            <Button variant="secondary" onClick={() => handleCloseModal(false)}>
+              {BUTTONS.CLOSE}
+            </Button>
+            <Button variant="primary" type="submit">
+              {BUTTONS.SAVE}
+            </Button>
+          </ModalBootstrap.Footer>
+        </Form>
       </ModalBootstrapStyled>
     </ModalBootstrap>
   );

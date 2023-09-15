@@ -8,3 +8,13 @@ export const ROUTES = [
     name: 'About',
   },
 ];
+
+export const LABELS = {
+  TYPE_TITLE: 'Type title',
+  TYPE_DESCRIPTION: 'Type description',
+};
+
+export const BUTTONS = {
+  SAVE: 'Save',
+  CLOSE: 'Close',
+};

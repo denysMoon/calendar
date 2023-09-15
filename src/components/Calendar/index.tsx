@@ -48,7 +48,6 @@ function renderEventContent(eventInfo: IEventContent) {
   return (
     <>
       <i>{eventInfo.event.title}</i>
-      <p>{eventInfo.event.comment}</p>
     </>
   );
 }

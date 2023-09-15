@@ -9,3 +9,7 @@ export const ModalBootstrapStyled = emotion(Modal.Body)({
   height: '50vh',
   backgroundColor: 'lightgrey',
 });
+
+export const ModalBootstrapBodyStyled = emotion(Modal.Body)({
+  width: '400px',
+});
