@@ -4,3 +4,7 @@ export interface IEventContent {
     comment: string;
   };
 }
+
+export type InputDescription = {
+  eventDescription: string;
+};
