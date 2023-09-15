@@ -26,16 +26,20 @@ export const handleEventClick = (clickInfo: EventClickArg) => {
 
 export const handleAddEvent = (
   title: string,
+  comment: string,
   selectInfo: DateSelectArg,
   setModalVisible: (argument0: boolean) => void,
 ) => {
   const calendarApi = selectInfo?.view.calendar;
   calendarApi?.unselect();
 
-  if (title && calendarApi) {
+  console.log(title, comment);
+
+  if ((title || comment) && calendarApi) {
     calendarApi.addEvent({
       id: createEventId(),
       title,
+      comment,
       start: selectInfo.startStr,
       end: selectInfo.endStr,
       allDay: selectInfo.allDay,
