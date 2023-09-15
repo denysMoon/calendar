@@ -17,4 +17,10 @@ export const LABELS = {
 export const BUTTONS = {
   SAVE: 'Save',
   CLOSE: 'Close',
+  GO_TO_MAIN: 'Go to Main',
+};
+
+export const TITLES = {
+  PAGE_NOT_FOUND: 'Page not found',
+  ABOUT: 'About',
 };

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Modal } from '../Modal';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
 
-export const Calendar = () => {
+const Calendar = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectInfo, setSelectInfo] = useState<DateSelectArg | undefined>();
 
@@ -51,3 +51,5 @@ function renderEventContent(eventInfo: IEventContent) {
     </>
   );
 }
+
+export default Calendar;

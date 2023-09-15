@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../constants';
+import { BUTTONS, ROUTES, TITLES } from '../../constants';
 import { PageWrapperStyled, TitleStyled } from '../../styles';
 
 export const About: React.FC = () => {
@@ -9,8 +9,8 @@ export const About: React.FC = () => {
 
   return (
     <PageWrapperStyled>
-      <TitleStyled>About</TitleStyled>
-      <Button onClick={clickHandler}>Go to Main</Button>
+      <TitleStyled>{TITLES.ABOUT}</TitleStyled>
+      <Button onClick={clickHandler}>{BUTTONS.GO_TO_MAIN}</Button>
     </PageWrapperStyled>
   );
 };
