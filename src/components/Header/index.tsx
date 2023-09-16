@@ -1,12 +1,13 @@
 import { Button } from 'react-bootstrap';
 import { useMatch } from 'react-router-dom';
+import { useSaveImage } from '../../hooks/useSaveImage';
 import { BUTTONS, ROUTES } from '../../constants';
-import { handleSaveAsImage } from '../../helpers';
 import { CustomLink } from '../CustomLink';
 import { HeaderStyled, NavStyled } from './styles';
 
 export const Header: React.FC = () => {
   const match = !!useMatch(ROUTES[0].path);
+  const { isLoading, handleSaveAsImage } = useSaveImage();
 
   return (
     <HeaderStyled>
@@ -19,7 +20,11 @@ export const Header: React.FC = () => {
           );
         })}
       </NavStyled>
-      {match && <Button onClick={handleSaveAsImage}>{BUTTONS.SAVE_CALENDAR_AS_IMAGE}</Button>}
+      {match && (
+        <Button disabled={isLoading} onClick={handleSaveAsImage}>
+          {BUTTONS.SAVE_CALENDAR_AS_IMAGE}
+        </Button>
+      )}
     </HeaderStyled>
   );
 };
