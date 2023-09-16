@@ -8,6 +8,7 @@ import { IEventContent } from '../../types';
 import { Modal } from '../Modal';
 import { ModalDelete } from '../ModalDelete';
 import { CalendarWrapperStyled } from './styles';
+import { motion } from 'framer-motion';
 
 // firstDay and other options will be stored with redux (and some in localstorage)
 
@@ -34,31 +35,33 @@ const Calendar = () => {
 
   return (
     <CalendarWrapperStyled id="calendar">
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        select={handleDateSelect}
-        initialView="dayGridMonth"
-        editable={true}
-        selectable={true}
-        selectMirror={true}
-        dayMaxEvents={true}
-        events={INITIAL_EVENTS}
-        eventContent={renderEventContent}
-        weekends={state.weekendsVisible}
-        eventClick={handleEventClick}
-        height={'600px'}
-        firstDay={1}
-      />
-      {modalVisible && selectInfo && (
-        <Modal handleCloseModal={setModalVisible} isShow={modalVisible} selectInfo={selectInfo} />
-      )}
-      {deleteModalVisible && eventClickInfo && (
-        <ModalDelete
-          eventClickInfo={eventClickInfo}
-          isShow={deleteModalVisible}
-          handleCloseModal={setDeleteModalVisible}
+      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          select={handleDateSelect}
+          initialView="dayGridMonth"
+          editable={true}
+          selectable={true}
+          selectMirror={true}
+          dayMaxEvents={true}
+          events={INITIAL_EVENTS}
+          eventContent={renderEventContent}
+          weekends={state.weekendsVisible}
+          eventClick={handleEventClick}
+          height={'600px'}
+          firstDay={1}
         />
-      )}
+        {modalVisible && selectInfo && (
+          <Modal handleCloseModal={setModalVisible} isShow={modalVisible} selectInfo={selectInfo} />
+        )}
+        {deleteModalVisible && eventClickInfo && (
+          <ModalDelete
+            eventClickInfo={eventClickInfo}
+            isShow={deleteModalVisible}
+            handleCloseModal={setDeleteModalVisible}
+          />
+        )}
+      </motion.div>
     </CalendarWrapperStyled>
   );
 };
