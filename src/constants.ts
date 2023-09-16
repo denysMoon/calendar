@@ -25,3 +25,5 @@ export const TITLES = {
   PAGE_NOT_FOUND: 'Page not found',
   ABOUT: 'About',
 };
+
+export const COLORS = ['BLUE', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'PURPLE', 'INDIGO', 'PINK'];

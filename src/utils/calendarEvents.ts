@@ -28,6 +28,7 @@ export const handleAddEvent = (
   title: string,
   selectInfo: DateSelectArg,
   setModalVisible: (argument0: boolean) => void,
+  color?: string,
 ) => {
   const calendarApi = selectInfo?.view.calendar;
   calendarApi?.unselect();
@@ -36,6 +37,7 @@ export const handleAddEvent = (
     calendarApi.addEvent({
       id: createEventId(),
       title,
+      color,
       start: selectInfo.startStr,
       end: selectInfo.endStr,
       allDay: selectInfo.allDay,
