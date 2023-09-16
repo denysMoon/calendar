@@ -16,10 +16,12 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'unicorn/consistent-function-scoping': 0,
 
     // temp
     'unicorn/no-empty-file': 1,
     'unicorn/filename-case': 0,
     'unicorn/filename-case': 0,
+
   },
 }

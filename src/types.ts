@@ -7,4 +7,5 @@ export interface IEventContent {
 
 export type InputDescription = {
   eventDescription: string;
+  color?: string;
 };
