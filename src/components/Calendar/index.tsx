@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
@@ -37,7 +38,7 @@ const Calendar = () => {
     <CalendarWrapperStyled id="calendar">
       <SmoothWrapper>
         <FullCalendar
-          plugins={[dayGridPlugin, interactionPlugin]}
+          plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           select={handleDateSelect}
           initialView="dayGridMonth"
           editable={true}
@@ -50,6 +51,8 @@ const Calendar = () => {
           eventClick={handleEventClick}
           height={'600px'}
           firstDay={1}
+          // Need it for mobile devices (for touch). Please, see this: https://stackoverflow.com/questions/40626776/fullcalendar-select-callback-not-firing-in-mobile
+          selectLongPressDelay={0.1}
         />
         {modalVisible && selectInfo && (
           <Modal handleCloseModal={setModalVisible} isShow={modalVisible} selectInfo={selectInfo} />

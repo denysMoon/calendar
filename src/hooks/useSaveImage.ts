@@ -2,7 +2,7 @@ import html2canvas from 'html2canvas';
 import { useState } from 'react';
 
 export const useSaveImage = () => {
-  // I really don't know what to call this state. It isn't loading fo sure.
+  // I really don't know how to call this state. It isn't loading fo sure.
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSaveAsImage = () => {
@@ -21,6 +21,10 @@ export const useSaveImage = () => {
         .finally(() => {
           setIsLoading(false);
         });
+
+      // will rewrite it to try catch later
+
+      // also, will add some alert in case of error
     }
   };
 

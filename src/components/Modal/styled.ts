@@ -6,10 +6,5 @@ export const ModalBootstrapStyled = emotion(Modal.Body)({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  height: '50vh',
   backgroundColor: 'lightgrey',
-});
-
-export const ModalBootstrapBodyStyled = emotion(Modal.Body)({
-  width: '400px',
 });
