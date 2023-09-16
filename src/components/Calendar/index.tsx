@@ -8,7 +8,7 @@ import { IEventContent } from '../../types';
 import { Modal } from '../Modal';
 import { ModalDelete } from '../ModalDelete';
 import { CalendarWrapperStyled } from './styles';
-import { motion } from 'framer-motion';
+import { SmoothWrapper } from '../common/SmoothWrapper';
 
 // firstDay and other options will be stored with redux (and some in localstorage)
 
@@ -35,7 +35,7 @@ const Calendar = () => {
 
   return (
     <CalendarWrapperStyled id="calendar">
-      <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+      <SmoothWrapper>
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
           select={handleDateSelect}
@@ -61,7 +61,7 @@ const Calendar = () => {
             handleCloseModal={setDeleteModalVisible}
           />
         )}
-      </motion.div>
+      </SmoothWrapper>
     </CalendarWrapperStyled>
   );
 };
