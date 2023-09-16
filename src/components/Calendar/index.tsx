@@ -2,17 +2,20 @@ import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { INITIAL_EVENTS, handleEventClick } from '../../utils/calendarEvents';
+import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
+import { INITIAL_EVENTS } from '../../utils/calendarEvents';
 import { IEventContent } from '../../types';
-import { DateSelectArg } from '@fullcalendar/core/index.js';
 import { Modal } from '../Modal';
+import { ModalDelete } from '../ModalDelete';
 import { CalendarWrapperStyled } from './styles';
 
 // firstDay and other options will be stored with redux (and some in localstorage)
 
 const Calendar = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectInfo, setSelectInfo] = useState<DateSelectArg | undefined>();
+  const [eventClickInfo, setEventClickInfo] = useState<EventClickArg | undefined>();
 
   const state = {
     weekendsVisible: true,
@@ -22,6 +25,11 @@ const Calendar = () => {
   const handleDateSelect = (selectInfo: DateSelectArg) => {
     setSelectInfo(selectInfo);
     setModalVisible(true);
+  };
+
+  const handleEventClick = (clickInfo: EventClickArg) => {
+    setEventClickInfo(clickInfo);
+    setDeleteModalVisible(true);
   };
 
   return (
@@ -43,6 +51,13 @@ const Calendar = () => {
       />
       {modalVisible && selectInfo && (
         <Modal handleCloseModal={setModalVisible} isShow={modalVisible} selectInfo={selectInfo} />
+      )}
+      {deleteModalVisible && eventClickInfo && (
+        <ModalDelete
+          eventClickInfo={eventClickInfo}
+          isShow={deleteModalVisible}
+          handleCloseModal={setDeleteModalVisible}
+        />
       )}
     </CalendarWrapperStyled>
   );
