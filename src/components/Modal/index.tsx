@@ -8,7 +8,7 @@ import { InputDescription } from '../../types';
 import { BUTTONS, COLORS, LABELS } from '../../constants';
 import { Input } from '../Input';
 import { Dropdown } from '../Dropdown';
-import { ModalBootstrapStyled, ModalBootstrapBodyStyled } from './styled';
+import { ModalBootstrapStyled } from './styled';
 
 export const Modal: React.FC<{
   handleCloseModal: (argument0: boolean) => void;
@@ -32,9 +32,9 @@ export const Modal: React.FC<{
     <ModalBootstrap centered show={isShow} onHide={() => handleCloseModal(false)}>
       <ModalBootstrapStyled>
         <Form onSubmit={handleSubmit(handleSave)}>
-          <ModalBootstrapBodyStyled>
+          <ModalBootstrap.Body>
             <Input type={'textarea'} label={LABELS.TYPE_DESCRIPTION} register={register} errors={errors} />
-          </ModalBootstrapBodyStyled>
+          </ModalBootstrap.Body>
           <ModalBootstrap.Footer>
             <Dropdown control={control} colors={COLORS} />
 
