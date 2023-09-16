@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
-import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
@@ -38,7 +37,7 @@ const Calendar = () => {
     <CalendarWrapperStyled id="calendar">
       <SmoothWrapper>
         <FullCalendar
-          plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+          plugins={[dayGridPlugin, interactionPlugin]}
           select={handleDateSelect}
           initialView="dayGridMonth"
           editable={true}
