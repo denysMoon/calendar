@@ -8,7 +8,7 @@ export const MainWrapperStyled = emotion.div({
 
 export const PageWrapperStyled = emotion.div({
   marginTop: '20px',
-  height: '70vh',
+  height: '100vh',
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
