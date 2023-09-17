@@ -48,7 +48,7 @@ const Calendar = () => {
           eventContent={renderEventContent}
           weekends={state.weekendsVisible}
           eventClick={handleEventClick}
-          height={'600px'}
+          height={'80vh'}
           firstDay={1}
           // Need it for mobile devices (for touch). Please, see this: https://stackoverflow.com/questions/40626776/fullcalendar-select-callback-not-firing-in-mobile
           selectLongPressDelay={0.1}
