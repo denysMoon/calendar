@@ -23,7 +23,7 @@ Check out the live deployment [here](https://calendar-denysmoon.vercel.app/).
 
 - Decomposition
 - Improve styles / add storybook / responsive design
-- Authorization with Auth0
+- Authorization with Auth0 with some additional functionality
 - Connect with relative DB (PostgresQL)
 
 ---
