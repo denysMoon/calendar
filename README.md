@@ -17,7 +17,7 @@ We maintain a high quality standard through the following checks:
 
 ## Deployment
 
-Check out the live deployment [here](https://calendar-ashy-kappa.vercel.app/).
+Check out the live deployment [here](https://calendar-denysmoon.vercel.app/).
 
 ## Working on
 
