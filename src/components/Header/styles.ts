@@ -14,3 +14,10 @@ export const NavStyled = emotion.nav({
   justifyContent: 'space-between',
   gap: '10px',
 });
+
+export const ButtonsWrapperStyled = emotion.div({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '10px',
+});

@@ -3,8 +3,8 @@ import { useMatch } from 'react-router-dom';
 import { useSaveImage } from '../../hooks/useSaveImage';
 import { BUTTONS, ROUTES } from '../../constants';
 import { CustomLink } from '../CustomLink';
-// import { AuthButtonWrapper } from '../AuthButtonWrapper';
-import { HeaderStyled, NavStyled } from './styles';
+import { AuthButtonWrapper } from '../AuthButtonWrapper';
+import { HeaderStyled, NavStyled, ButtonsWrapperStyled } from './styles';
 
 export const Header: React.FC = () => {
   const match = !!useMatch(ROUTES[0].path);
@@ -21,12 +21,14 @@ export const Header: React.FC = () => {
           );
         })}
       </NavStyled>
-      {/* <AuthButtonWrapper /> */}
-      {match && (
-        <Button disabled={isLoading} onClick={handleSaveAsImage}>
-          {BUTTONS.SAVE_CALENDAR_AS_IMAGE}
-        </Button>
-      )}
+      <ButtonsWrapperStyled>
+        {match && (
+          <Button disabled={isLoading} onClick={handleSaveAsImage}>
+            {BUTTONS.SAVE_CALENDAR_AS_IMAGE}
+          </Button>
+        )}
+        <AuthButtonWrapper />
+      </ButtonsWrapperStyled>
     </HeaderStyled>
   );
 };

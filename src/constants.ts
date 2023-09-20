@@ -24,7 +24,7 @@ export const BUTTONS = {
   SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
   DELETE: 'Are you sure? Delete?',
   LOGIN: 'Login',
-  LOGOUT: 'Logout',
+  LOG_OUT: 'Log out',
 };
 
 export const TITLES = {
