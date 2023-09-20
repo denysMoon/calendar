@@ -1,11 +1,21 @@
-import { AppState, RedirectLoginOptions } from '@auth0/auth0-react';
+import { AppState, LogoutOptions, RedirectLoginOptions } from '@auth0/auth0-react';
 import { Button as BootstrapButton } from 'react-bootstrap';
 
 interface IButton {
   text: string;
-  clickHandler: (options?: RedirectLoginOptions<AppState> | undefined) => Promise<void>;
+  login?: (options?: RedirectLoginOptions<AppState> | undefined) => Promise<void>;
+  logout?: (options?: LogoutOptions | undefined) => Promise<void>;
+  isLogin?: boolean;
 }
 
-export const Button: React.FC<IButton> = ({ text, clickHandler }) => {
-  return <BootstrapButton onClick={() => clickHandler()}>{text}</BootstrapButton>;
+export const Button: React.FC<IButton> = ({ text, isLogin, login, logout }) => {
+  // Yeah, it's a bit ugly, but it's just temporary
+  const clickHandler = () => {
+    if (isLogin && login) {
+      login();
+    } else if (!isLogin && logout) {
+      logout({ logoutParams: { returnTo: window.location.origin } });
+    }
+  };
+  return <BootstrapButton onClick={clickHandler}>{text}</BootstrapButton>;
 };
