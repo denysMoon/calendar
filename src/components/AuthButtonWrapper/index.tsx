@@ -5,8 +5,6 @@ import { BUTTONS } from '../../constants';
 export const AuthButtonWrapper: React.FC = () => {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
-  console.log('isAuthenticated', isAuthenticated);
-
   if (!isAuthenticated) {
     return <Button text={BUTTONS.LOGIN} clickHandler={loginWithRedirect} />;
   }

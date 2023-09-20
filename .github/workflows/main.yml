@@ -3,6 +3,8 @@ name: Calendar CI
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VITE_REACT_AUTH0_DOMAIN: ${{ secrets.VITE_REACT_AUTH0_DOMAIN }}
+  VITE_REACT_AUTH0_CLIENT_ID: ${{ secrets.VITE_REACT_AUTH0_CLIENT_ID }}
 
 on:
   push:
@@ -55,7 +57,7 @@ jobs:
         run: npm install
 
       - name: Deploy Preview
-        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=false
+        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=false --env VITE_REACT_AUTH0_DOMAIN=${{secrets.VITE_REACT_AUTH0_DOMAIN}}  --env VITE_REACT_AUTH0_CLIENT_ID=${{secrets.VITE_REACT_AUTH0_CLIENT_ID}}
 
   deploy-production:
     runs-on: ubuntu-latest
@@ -73,4 +75,4 @@ jobs:
         run: npm install
 
       - name: Deploy Production
-        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=true
+        run: vercel deploy --token=${{secrets.VERCEL_TOKEN}} --prod=true --env VITE_REACT_AUTH0_DOMAIN=${{secrets.VITE_REACT_AUTH0_DOMAIN}}  --env VITE_REACT_AUTH0_CLIENT_ID=${{secrets.VITE_REACT_AUTH0_CLIENT_ID}}
