@@ -21,7 +21,7 @@ export const BUTTONS = {
   SAVE: 'Save',
   CLOSE: 'Close',
   GO_TO_MAIN: 'Go to Main',
-  SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
+  SAVE_CALENDAR_AS_IMAGE: 'Save calendar',
   DELETE: 'Are you sure? Delete?',
   LOGIN: 'Login',
   LOG_OUT: 'Log out',
