@@ -33,3 +33,8 @@ export const TITLES = {
 };
 
 export const COLORS = ['BLUE', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'PURPLE', 'INDIGO', 'PINK'];
+
+// Will be more messages
+export const ALERTS = {
+  PLEASE_LOGIN_FOR_BETTER_EXPERIENCE: 'Please login for better experience',
+};
