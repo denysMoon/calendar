@@ -1,3 +1,6 @@
+export const DOMAINS = process.env.AUTH0_DOMAIN;
+export const CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+
 export const ROUTES = [
   {
     path: '/',
