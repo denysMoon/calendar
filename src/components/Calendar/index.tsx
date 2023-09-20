@@ -14,8 +14,6 @@ import { useMount } from '../../hooks/useMount';
 import { fetchHolidays } from '../../store/holidays/holidays.slice';
 import { RootState } from '../../store';
 
-// firstDay and other options will be stored with redux (and some in localstorage)
-
 const Calendar = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
