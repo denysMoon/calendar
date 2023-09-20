@@ -3,12 +3,16 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
-import { INITIAL_EVENTS } from '../../utils/calendarEvents';
 import { IEventContent } from '../../types';
 import { Modal } from '../Modal';
 import { ModalDelete } from '../ModalDelete';
 import { CalendarWrapperStyled } from './styles';
 import { SmoothWrapper } from '../common/SmoothWrapper';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../store/dispatch';
+import { useMount } from '../../hooks/useMount';
+import { fetchHolidays } from '../../store/holidays/holidays.slice';
+import { RootState } from '../../store';
 
 // firstDay and other options will be stored with redux (and some in localstorage)
 
@@ -17,10 +21,32 @@ const Calendar = () => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectInfo, setSelectInfo] = useState<DateSelectArg | undefined>();
   const [eventClickInfo, setEventClickInfo] = useState<EventClickArg | undefined>();
+  const holidays = useSelector((state: RootState) => state.holidaysReducer);
+  const dispatch = useAppDispatch();
+
+  console.log(holidays);
+
+  useMount(() => {
+    // Temp hardcoded country code
+    dispatch(fetchHolidays('UA'));
+  });
 
   const state = {
     weekendsVisible: true,
     currentEvents: [],
+  };
+
+  // It will be hook or helper
+  const getHolidaysEvents = () => {
+    const events = holidays.holidays.map((holiday) => {
+      return {
+        id: holiday.date,
+        title: holiday.name,
+        start: holiday.date,
+      };
+    });
+
+    return events;
   };
 
   const handleDateSelect = (selectInfo: DateSelectArg) => {
@@ -44,7 +70,7 @@ const Calendar = () => {
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
-          events={INITIAL_EVENTS}
+          events={getHolidaysEvents()}
           eventContent={renderEventContent}
           weekends={state.weekendsVisible}
           eventClick={handleEventClick}

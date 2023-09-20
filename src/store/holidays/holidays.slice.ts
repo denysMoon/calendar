@@ -3,9 +3,11 @@ import { Holiday } from '../types';
 
 interface HolidaysSliceState {
   holidays: Holiday[];
+  isLoading: false;
+  error: string | null;
 }
 
-const initialState = {
+const initialState: HolidaysSliceState = {
   holidays: [],
   isLoading: false,
   error: null,
@@ -43,6 +45,7 @@ export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<H
       ...state,
       error: action.payload,
       loading: false,
+      holidays: [],
     }),
   },
 });

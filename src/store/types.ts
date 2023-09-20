@@ -12,15 +12,4 @@ export interface Holiday {
   types: string[];
 }
 
-export type RootState = {
-  counterReducer: {
-    value: number;
-  };
-  holidaysReducer: {
-    holidays: Holiday[];
-    isLoading: boolean;
-    error: string | null;
-  };
-};
-
 export type AppDispatch = typeof store.dispatch;
