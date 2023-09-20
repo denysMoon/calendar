@@ -1,3 +1,6 @@
+export const DOMAINS = process.env.AUTH0_DOMAIN;
+export const CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+
 export const ROUTES = [
   {
     path: '/',
@@ -20,6 +23,8 @@ export const BUTTONS = {
   GO_TO_MAIN: 'Go to Main',
   SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
   DELETE: 'Are you sure? Delete?',
+  LOGIN: 'Login',
+  LOGOUT: 'Logout',
 };
 
 export const TITLES = {
