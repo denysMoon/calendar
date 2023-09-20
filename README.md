@@ -21,7 +21,7 @@ Check out the live deployment [here](https://calendar-denysmoon.vercel.app/).
 
 ## Working on
 
-- Add redux state management
+- Decomposition
 - Improve styles / add storybook / responsive design
 - Authorization with Auth0
 - Connect with relative DB (PostgresQL)
