@@ -1,5 +1,5 @@
-export const DOMAINS = process.env.AUTH0_DOMAIN;
-export const CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+export const DOMAIN = import.meta.env.VITE_REACT_AUTH0_DOMAIN;
+export const CLIENT_ID = import.meta.env.VITE_REACT_AUTH0_CLIENT_ID;
 
 export const ROUTES = [
   {
@@ -24,7 +24,7 @@ export const BUTTONS = {
   SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
   DELETE: 'Are you sure? Delete?',
   LOGIN: 'Login',
-  LOGOUT: 'Logout',
+  LOG_OUT: 'Log out',
 };
 
 export const TITLES = {
