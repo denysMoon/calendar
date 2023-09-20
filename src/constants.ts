@@ -20,6 +20,8 @@ export const BUTTONS = {
   GO_TO_MAIN: 'Go to Main',
   SAVE_CALENDAR_AS_IMAGE: 'Save calendar as image',
   DELETE: 'Are you sure? Delete?',
+  LOGIN: 'Login',
+  LOGOUT: 'Logout',
 };
 
 export const TITLES = {
