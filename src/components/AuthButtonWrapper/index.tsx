@@ -6,8 +6,8 @@ export const AuthButtonWrapper: React.FC = () => {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   if (!isAuthenticated) {
-    return <Button text={BUTTONS.LOGIN} clickHandler={loginWithRedirect} />;
+    return <Button isLogin={true} text={BUTTONS.LOGIN} login={loginWithRedirect} />;
   }
 
-  return <Button text={BUTTONS.LOG_OUT} clickHandler={logout} />;
+  return <Button text={BUTTONS.LOG_OUT} logout={logout} />;
 };
