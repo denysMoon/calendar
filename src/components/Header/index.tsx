@@ -3,6 +3,7 @@ import { useMatch } from 'react-router-dom';
 import { useSaveImage } from '../../hooks/useSaveImage';
 import { BUTTONS, ROUTES } from '../../constants';
 import { CustomLink } from '../CustomLink';
+// import { AuthButtonWrapper } from '../AuthButtonWrapper';
 import { HeaderStyled, NavStyled } from './styles';
 
 export const Header: React.FC = () => {
@@ -20,6 +21,7 @@ export const Header: React.FC = () => {
           );
         })}
       </NavStyled>
+      {/* <AuthButtonWrapper /> */}
       {match && (
         <Button disabled={isLoading} onClick={handleSaveAsImage}>
           {BUTTONS.SAVE_CALENDAR_AS_IMAGE}
