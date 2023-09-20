@@ -1,12 +1,15 @@
 import { Button } from 'react-bootstrap';
 import { useMatch } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import { useSaveImage } from '../../hooks/useSaveImage';
 import { BUTTONS, ROUTES } from '../../constants';
 import { CustomLink } from '../CustomLink';
 import { AuthButtonWrapper } from '../AuthButtonWrapper';
 import { HeaderStyled, NavStyled, ButtonsWrapperStyled } from './styles';
+import { Avatar } from '../Avatar';
 
 export const Header: React.FC = () => {
+  const { user } = useAuth0();
   const match = !!useMatch(ROUTES[0].path);
   const { isLoading, handleSaveAsImage } = useSaveImage();
 
@@ -28,6 +31,7 @@ export const Header: React.FC = () => {
           </Button>
         )}
         <AuthButtonWrapper />
+        {user?.picture && <Avatar src={user.picture} />}
       </ButtonsWrapperStyled>
     </HeaderStyled>
   );

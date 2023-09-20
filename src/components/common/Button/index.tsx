@@ -10,6 +10,7 @@ interface IButton {
 
 export const Button: React.FC<IButton> = ({ text, isLogin, login, logout }) => {
   // Yeah, it's a bit ugly, but it's just temporary
+  // TODO: refactor this
   const clickHandler = () => {
     if (isLogin && login) {
       login();
