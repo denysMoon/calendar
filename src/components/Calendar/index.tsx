@@ -3,16 +3,16 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
-import { IEventContent } from '../../types';
-import { Modal } from '../Modal';
-import { ModalDelete } from '../ModalDelete';
-import { CalendarWrapperStyled } from './styles';
-import { SmoothWrapper } from '../common/SmoothWrapper';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/dispatch';
 import { useMount } from '../../hooks/useMount';
 import { fetchHolidays } from '../../store/holidays/holidays.slice';
 import { RootState } from '../../store';
+import { IEventContent } from '../../types';
+import { Modal } from '../Modal';
+import { ModalDelete } from '../ModalDelete';
+import { SmoothWrapper } from '../common/SmoothWrapper';
+import { CalendarWrapperStyled } from './styles';
 
 const Calendar = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,8 +21,6 @@ const Calendar = () => {
   const [eventClickInfo, setEventClickInfo] = useState<EventClickArg | undefined>();
   const holidays = useSelector((state: RootState) => state.holidaysReducer);
   const dispatch = useAppDispatch();
-
-  console.log(holidays);
 
   useMount(() => {
     // Temp hardcoded country code
