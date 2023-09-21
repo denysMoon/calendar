@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dropdown as DropdownBootstrap, DropdownButton } from 'react-bootstrap';
 import { Control, Controller } from 'react-hook-form';
-import { InputDescription } from '../../types';
+import { InputDescription } from '@/types';
 
 interface IDropdown {
   control: Control<InputDescription>;

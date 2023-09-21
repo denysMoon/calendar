@@ -2,15 +2,15 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
 import { Button, Modal as ModalBootstrap, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { schemaInputEventDescription } from '../../utils/yup';
-import { InputDescription } from '../../types';
-import { BUTTONS, COLORS, LABELS } from '../../constants';
+import { schemaInputEventDescription } from '@/utils/yup';
+import { BUTTONS, COLORS, LABELS } from '@/constants';
+import { InputDescription } from '@/types';
+import { addHoliday } from '@/store/holidays/holidays.slice';
 import { Input } from '../Input';
 import { Dropdown } from '../Dropdown';
 import { ModalBootstrapStyled } from './styled';
-import { useDispatch } from 'react-redux';
-import { addHoliday } from '../../store/holidays/holidays.slice';
 
 export const Modal: React.FC<{
   handleCloseModal: (argument0: boolean) => void;
