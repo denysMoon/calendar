@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
 import { Button, Modal as ModalBootstrap, Form } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import { schemaInputEventDescription } from '../../utils/yup';
 import { InputDescription } from '../../types';
 import { BUTTONS, COLORS, LABELS } from '../../constants';
@@ -26,7 +27,16 @@ export const Modal: React.FC<{
   const dispatch = useDispatch();
 
   const handleSave: SubmitHandler<InputDescription> = (data) => {
-    dispatch(addHoliday({ name: data.eventDescription, date: selectInfo.startStr, color: data.color }));
+    console.log(selectInfo);
+    dispatch(
+      addHoliday({
+        name: data.eventDescription,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        color: data.color,
+        id: uuidv4(),
+      }),
+    );
     handleCloseModal(false);
     reset();
   };

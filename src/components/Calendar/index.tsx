@@ -36,10 +36,11 @@ const Calendar = () => {
   const getHolidaysEvents = () => {
     const events = holidays.holidays.map((holiday) => {
       return {
-        id: holiday.date,
         title: holiday.name,
-        start: holiday.date,
+        start: holiday.date ?? holiday.start,
+        end: holiday.end,
         color: holiday.color,
+        id: holiday.id,
       };
     });
 
