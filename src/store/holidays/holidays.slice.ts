@@ -30,10 +30,13 @@ export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<H
   name: 'holidays',
   initialState,
   reducers: {
-    addHoliday: (state, action: PayloadAction<HolidaysState>) => ({
-      ...state,
-      holidays: [...state.holidays, action.payload],
-    }),
+    addHoliday: (state, action: PayloadAction<HolidaysState>) => {
+      console.log(action);
+      return {
+        ...state,
+        holidays: [...state.holidays, action.payload],
+      };
+    },
   },
   extraReducers: {
     [fetchHolidays.pending.toString()]: (state) => ({

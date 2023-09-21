@@ -26,10 +26,24 @@ export const Modal: React.FC<{
   const dispatch = useDispatch();
 
   const handleSave: SubmitHandler<InputDescription> = (data) => {
-    dispatch(addHoliday({ name: data.eventDescription, date: selectInfo.startStr, color: data.color }));
+    console.log(selectInfo);
+    dispatch(
+      addHoliday({
+        name: data.eventDescription,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        color: data.color,
+      }),
+    );
     handleCloseModal(false);
     reset();
   };
+
+  //   title,
+  // color,
+  // start: selectInfo.startStr,
+  // end: selectInfo.endStr,
+  // allDay: selectInfo.allDay,
 
   return (
     <ModalBootstrap centered show={isShow} onHide={() => handleCloseModal(false)}>

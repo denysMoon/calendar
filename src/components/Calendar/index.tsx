@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { v4 as uuidv4 } from 'uuid';
 import { DateSelectArg, EventClickArg } from '@fullcalendar/core/index.js';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/dispatch';
@@ -36,9 +37,10 @@ const Calendar = () => {
   const getHolidaysEvents = () => {
     const events = holidays.holidays.map((holiday) => {
       return {
-        id: holiday.date,
+        id: uuidv4(),
         title: holiday.name,
-        start: holiday.date,
+        start: holiday.date ?? holiday.start,
+        end: holiday.end,
         color: holiday.color,
       };
     });
