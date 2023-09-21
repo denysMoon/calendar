@@ -40,7 +40,6 @@ Check out the live deployment [here](https://calendar-denysmoon.vercel.app/).
 - `npm run build` - Builds the production-ready application.
 - `npm run lint` - Runs ESLint to check for code quality.
 - `npm run compiler-checks` - Checks TypeScript types.
-- `npm run format` - Formats the code using Prettier.
 
 ---
 
