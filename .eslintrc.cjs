@@ -18,6 +18,7 @@ module.exports = {
     ],
     'unicorn/consistent-function-scoping': 0,
     'unicorn/no-null': 0,
+    'unicorn/prefer-module': 0,
 
     // temp
     'unicorn/no-empty-file': 1,

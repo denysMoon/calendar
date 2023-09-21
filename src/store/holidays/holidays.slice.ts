@@ -1,6 +1,6 @@
 import { PayloadAction, SliceCaseReducers, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { HolidaysState } from '../types';
-import { BASE_URL } from '../../constants';
+import { BASE_URL } from '@/constants';
 
 interface HolidaysSliceState {
   holidays: HolidaysState[];
@@ -18,7 +18,9 @@ export const fetchHolidays = createAsyncThunk<HolidaysSliceState, string>(
   'holidays/fetchByCountry',
   async (country, { rejectWithValue }) => {
     // Temp hardcoded
-    const response = await fetch(`${BASE_URL}PublicHolidays/2023/${country}`);
+    // TODO: take time to think how to in the optimal way set year
+    // TODO: try/catch
+    const response = await fetch(`${BASE_URL}/PublicHolidays/2023/${country}`);
     const data = await response.json();
     if (response.status < 200 || response.status >= 300) {
       return rejectWithValue(data);

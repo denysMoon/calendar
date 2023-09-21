@@ -1,6 +1,6 @@
+import { InputDescription } from '@/types';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { InputDescription } from '../../types';
 
 interface IInput {
   type: 'textarea' | 'input';
