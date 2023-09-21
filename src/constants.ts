@@ -1,6 +1,7 @@
 export const DOMAIN = import.meta.env.VITE_REACT_AUTH0_DOMAIN;
 export const CLIENT_ID = import.meta.env.VITE_REACT_AUTH0_CLIENT_ID;
 
+export const BASE_URL = 'https://date.nager.at/api/v3/';
 export const ROUTES = [
   {
     path: '/',

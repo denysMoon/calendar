@@ -1,5 +1,6 @@
 import { PayloadAction, SliceCaseReducers, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { HolidaysState } from '../types';
+import { BASE_URL } from '../../constants';
 
 interface HolidaysSliceState {
   holidays: HolidaysState[];
@@ -17,7 +18,7 @@ export const fetchHolidays = createAsyncThunk<HolidaysSliceState, string>(
   'holidays/fetchByCountry',
   async (country, { rejectWithValue }) => {
     // Temp hardcoded
-    const response = await fetch(`https://date.nager.at/api/v3/PublicHolidays/2023/${country}`);
+    const response = await fetch(`${BASE_URL}PublicHolidays/2023/${country}`);
     const data = await response.json();
     if (response.status < 200 || response.status >= 300) {
       return rejectWithValue(data);
@@ -35,6 +36,14 @@ export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<H
       return {
         ...state,
         holidays: [...state.holidays, action.payload],
+      };
+    },
+    deleteHoliday: (state, action: PayloadAction<string>) => {
+      const idToDelete = action.payload;
+
+      return {
+        ...state,
+        holidays: state.holidays.filter((holiday) => holiday.id !== idToDelete),
       };
     },
   },
@@ -59,6 +68,6 @@ export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<H
 });
 
 export const {
-  actions: { addHoliday },
+  actions: { addHoliday, deleteHoliday },
   reducer: holidaysReducer,
 } = holidaysSlice;

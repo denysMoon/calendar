@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
 import { Button, Modal as ModalBootstrap, Form } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import { schemaInputEventDescription } from '../../utils/yup';
 import { InputDescription } from '../../types';
 import { BUTTONS, COLORS, LABELS } from '../../constants';
@@ -33,17 +34,12 @@ export const Modal: React.FC<{
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         color: data.color,
+        id: uuidv4(),
       }),
     );
     handleCloseModal(false);
     reset();
   };
-
-  //   title,
-  // color,
-  // start: selectInfo.startStr,
-  // end: selectInfo.endStr,
-  // allDay: selectInfo.allDay,
 
   return (
     <ModalBootstrap centered show={isShow} onHide={() => handleCloseModal(false)}>

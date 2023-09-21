@@ -17,14 +17,8 @@ export interface HolidaysState extends Holiday {
   color?: string;
   start?: string;
   end?: string;
-  allDay: boolean;
+  allDay?: boolean;
+  id?: string;
 }
-
-// id: createEventId(),
-// title,
-// color,
-// start: selectInfo.startStr,
-// end: selectInfo.endStr,
-// allDay: selectInfo.allDay,
 
 export type AppDispatch = typeof store.dispatch;
