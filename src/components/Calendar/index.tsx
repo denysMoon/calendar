@@ -39,6 +39,7 @@ const Calendar = () => {
         id: holiday.date,
         title: holiday.name,
         start: holiday.date,
+        color: holiday.color,
       };
     });
 

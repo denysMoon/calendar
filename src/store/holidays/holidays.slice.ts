@@ -1,8 +1,8 @@
-import { SliceCaseReducers, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Holiday } from '../types';
+import { PayloadAction, SliceCaseReducers, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { HolidaysState } from '../types';
 
 interface HolidaysSliceState {
-  holidays: Holiday[];
+  holidays: HolidaysState[];
   isLoading: false;
   error: string | null;
 }
@@ -29,7 +29,12 @@ export const fetchHolidays = createAsyncThunk<HolidaysSliceState, string>(
 export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<HolidaysSliceState>>({
   name: 'holidays',
   initialState,
-  reducers: {},
+  reducers: {
+    addHoliday: (state, action: PayloadAction<HolidaysState>) => ({
+      ...state,
+      holidays: [...state.holidays, action.payload],
+    }),
+  },
   extraReducers: {
     [fetchHolidays.pending.toString()]: (state) => ({
       ...state,
@@ -50,4 +55,7 @@ export const holidaysSlice = createSlice<HolidaysSliceState, SliceCaseReducers<H
   },
 });
 
-export const { reducer: holidaysReducer } = holidaysSlice;
+export const {
+  actions: { addHoliday },
+  reducer: holidaysReducer,
+} = holidaysSlice;

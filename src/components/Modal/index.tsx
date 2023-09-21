@@ -2,13 +2,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DateSelectArg } from '@fullcalendar/core/index.js';
 import { Button, Modal as ModalBootstrap, Form } from 'react-bootstrap';
-import { handleAddEvent } from '../../utils/calendarEvents';
 import { schemaInputEventDescription } from '../../utils/yup';
 import { InputDescription } from '../../types';
 import { BUTTONS, COLORS, LABELS } from '../../constants';
 import { Input } from '../Input';
 import { Dropdown } from '../Dropdown';
 import { ModalBootstrapStyled } from './styled';
+import { useDispatch } from 'react-redux';
+import { addHoliday } from '../../store/holidays/holidays.slice';
 
 export const Modal: React.FC<{
   handleCloseModal: (argument0: boolean) => void;
@@ -22,9 +23,11 @@ export const Modal: React.FC<{
     control,
     formState: { errors },
   } = useForm<InputDescription>({ resolver: yupResolver(schemaInputEventDescription) });
+  const dispatch = useDispatch();
 
   const handleSave: SubmitHandler<InputDescription> = (data) => {
-    handleAddEvent(data.eventDescription, selectInfo, handleCloseModal, data.color);
+    dispatch(addHoliday({ name: data.eventDescription, date: selectInfo.startStr, color: data.color }));
+    handleCloseModal(false);
     reset();
   };
 
