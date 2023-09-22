@@ -35,12 +35,13 @@ const Calendar = () => {
   // It will be hook or helper
   const getHolidaysEvents = () => {
     const events = holidays.holidays.map((holiday) => {
+      console.log(holiday);
       return {
         title: holiday.name,
         start: holiday.date ?? holiday.start,
         end: holiday.end,
         color: holiday.color,
-        id: holiday.id,
+        id: holiday.id ?? '',
       };
     });
 
